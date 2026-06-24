@@ -20,7 +20,7 @@ async def main(user_query: str) -> None:
     # tavily_search_client = HttpStatefulClient(
     # name="tavily_mcp",
     # transport="sse",
-    # url="https://mcp.tavily.com/mcp/?tavilyApiKey=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"
+    # url="https://mcp.tavily.com/mcp/?tavilyApiKey=[api-key]"
     # )
 
     tavily_search_client = StdIOStatefulClient(
