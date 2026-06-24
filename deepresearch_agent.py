@@ -60,23 +60,24 @@ class SubTaskItem(BaseModel):
 class DeepResearchAgent(ReActAgent):
     """
     Deep Research Agent for sophisticated research tasks.
+
     Example:
     .. code-block:: python
     agent = DeepResearchAgent(
-    name="Friday",
-    sys_prompt="You are a helpful assistant named Friday.",
-    model=my_chat_model,
-    formatter=my_chat_formatter,
-    memory=InMemoryMemory(),
-    search_mcp_client=my_tavily_search_client,
-    tmp_file_storage_dir=agent_working_dir,
+        name="Friday",
+        sys_prompt="You are a helpful assistant named Friday.",
+        model=my_chat_model,
+        formatter=my_chat_formatter,
+        memory=InMemoryMemory(),
+        search_mcp_client=my_tavily_search_client,
+        tmp_file_storage_dir=agent_working_dir,
     )
     response = await agent(
-    Msg(
-    name=“user”,
-    content="Please give me a survey of the LLM-empowered agent.",
-    role=“user”
-    )
+        Msg(
+            name=“user”,
+            content="Please give me a survey of the LLM-empowered agent.",
+            role=“user”
+        )
     )
 ```
  """
@@ -251,9 +252,8 @@ class DeepResearchAgent(ReActAgent):
                     msg_response = await self._acting(tool_call)
                     if msg_response:
                         await self.memory.add(msg_response)
-
-                    self.current_subtask = []
-                    return msg_response
+                        self.current_subtask = []
+                        return msg_response
                 
             # When the maximum iterations are reached, summarize all the findings
             return await self._summarizing()
